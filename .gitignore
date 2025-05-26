@@ -1,0 +1,5 @@
+.DS_S*
+grafana-storage/*
+loki-data/*
+prometheus-data/*
+*.json

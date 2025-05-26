@@ -1,0 +1,27 @@
+# loki-config.yaml
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+
+common:
+  # Single-node in-memory ring for memberlist (needed even for single-binary)
+  ring:
+    kvstore:
+      store: inmemory
+  replication_factor: 1
+  path_prefix: /tmp/loki
+
+schema_config:
+  configs:
+    - from: 2020-05-15          # any past date
+      store: tsdb               # use the TSDB index (recommended for v2.8+)
+      object_store: filesystem  # store chunks & index on local FS
+      schema: v13               # current schema version
+      index:
+        prefix: index_
+        period: 24h
+
+storage_config:
+  filesystem:
+    directory: /tmp/loki/chunks  # where chunk data and TSDB blocks live

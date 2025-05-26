@@ -1,0 +1,11 @@
+[
+    {
+        "targets": [
+            "192.168.4.109:8080"
+        ],
+        "labels": {
+            "job": "echo_service",
+            "instance": "echo-01"
+        }
+    }
+]
